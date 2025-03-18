@@ -1,12 +1,12 @@
 function Footer() {
-  
+
     return (
-      <>
-<footer>
-        (C) Stefan
-    </footer>    </>
+        <>
+            <footer>
+                (C) Stefan
+            </footer>
+        </>
     )
-  }
-  
-  export default Footer
-  
+}
+
+export default Footer

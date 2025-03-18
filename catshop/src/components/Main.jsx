@@ -1,9 +1,19 @@
-function Main() {
+import { Home } from "./Home"
+import { Products } from "./Products"
 
-    return (
-        <>
-            <div>Main</div>   </>
-    )
+
+
+function Main(props) {
+
+  return (
+    <>
+
+      {props.activePage == 'Home' && <Home></Home>}
+      {props.activePage == 'Products' && <Products></Products>}
+
+
+    </>
+  )
 }
 
 export default Main

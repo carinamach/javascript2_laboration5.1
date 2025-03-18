@@ -1,17 +1,22 @@
 import { useState } from 'react'
 import './App.css'
 import Header from './components/Header'
-import Footer from './components/Footer'
 import Main from './components/Main'
+import Footer from './components/Footer'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [activePage, setActivePage] = useState("Home")
+
+  const onItemClicked = (newPage) => {
+    setActivePage(newPage)
+  }
+
 
   return (
     <>
-    <Header></Header>
-    <Main></Main>
-    <Footer></Footer>
+      <Header activePage={activePage} onItemClicked={onItemClicked}></Header>
+      <Main activePage={activePage}></Main>
+      <Footer></Footer>
     </>
   )
 }
