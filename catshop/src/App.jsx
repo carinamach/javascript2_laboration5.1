@@ -3,20 +3,50 @@ import './App.css'
 import Header from './components/Header'
 import Main from './components/Main'
 import Footer from './components/Footer'
+import {createBrowserRouter, RouterProvider, Outlet} from 'react-router-dom'
+import { Products } from './components/Products'
+import Contact from './components/Contact'
+import { Home } from './components/Home'
+import { SingleProduct } from './components/SingleProduct'
 
-function App() {
-  const [activePage, setActivePage] = useState("Home")
-
-  const onItemClicked = (newPage) => {
-    setActivePage(newPage)
-  }
-
-
+function Layout(){
   return (
     <>
-      <Header activePage={activePage} onItemClicked={onItemClicked}></Header>
-      <Main activePage={activePage}></Main>
-      <Footer></Footer>
+      <Header/>
+      <Outlet/>
+      <Footer/>
+    </>
+  );
+}
+const router = createBrowserRouter([{
+  element: <Layout/>,
+  errorElement: <div>FEL</div>,
+  children:[
+    {
+      path: '/',
+      element: <Home></Home>
+    },
+    {
+      path: '/products',
+      element: <Products></Products>
+    },
+    {
+      path: '/contact',
+      element: <Contact></Contact>
+    },
+    {
+      path: '/product/:id',
+      element: <SingleProduct></SingleProduct>
+    },
+  ]
+}])
+function App() {
+  return (
+    <>
+      <RouterProvider router = {router}>
+
+      </RouterProvider>
+
     </>
   )
 }

@@ -1,23 +1,21 @@
 import React from 'react'
-import { useState } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 
-export const HeaderMenuItem = (props) => {
+export const HeaderMenuItem = ({text, navLink}) => {
 
     //    let clicked = false
 
-    const IWasClicked = () => {
-        props.onPageMenuClick(props.text)
-    }
+    const location = useLocation();
 
     return (
         <li>
-            <a
-                onClick={IWasClicked}
+            <Link 
+            to = {navLink}
                 //className="headeranchor"
-                className={`headeranchor ${props.activePage === props.text ? 'active' : ''}`}
-                href="#">
-                {props.text}
-            </a>
+               className={`headeranchor ${location.pathname === navLink ? 'active' : ''}`}
+            >
+                {text}
+            </Link>
         </li>
     )
 }

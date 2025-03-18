@@ -1,15 +1,19 @@
+import Contact from "./Contact";
 import { Home } from "./Home"
 import { Products } from "./Products"
+import { PageContext } from "./data/PageContext"
+import { useContext } from "react"
 
 
-
-function Main(props) {
+function Main() {
+  const {activePage, setActivePage} = useContext(PageContext);
 
   return (
     <>
 
-      {props.activePage == 'Home' && <Home></Home>}
-      {props.activePage == 'Products' && <Products></Products>}
+      {activePage == 'Home' && <Home></Home>}
+      {activePage == 'Products' && <Products></Products>}
+      {activePage == 'Contact' && <Contact></Contact>}
 
 
     </>
